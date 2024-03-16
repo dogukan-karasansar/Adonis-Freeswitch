@@ -17,3 +17,17 @@
 const Route = use('Route')
 
 Route.on('/').render('welcome')
+
+
+
+/* Customer */
+Route.group(() => {
+  Route.post('register', 'CustomerController.register')
+  Route.post('login', 'CustomerController.login')
+  Route.get('profile', 'CustomerController.profile').middleware('auth')
+  Route.put('update_profile', 'CustomerController.updateProfile').middleware('auth')
+  Route.post('change_password', 'CustomerController.changePassword').middleware('auth')
+}).prefix('api/customer')
+
+
+
